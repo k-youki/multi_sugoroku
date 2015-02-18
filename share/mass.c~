@@ -1,0 +1,311 @@
+/*
+ 1.1進む
+ 2.2進む
+ 3.3進む
+ 4.4進む
+ 5.5進む
+ 6.6進む
+ 7.1戻る
+ 8.2戻る
+ 9.3戻る
+10.4戻る
+11.5戻る
+12.6戻る
+13.スタートに戻る
+14.1回休み
+15.2回休み
+16.次のターンの人と場所交換
+17.前のターンの人と場所交換
+18.次のターンの人1回休み
+19.前のターンの人1回休み
+20.サイコロをもう一回振る出た分進む
+21.サイコロをもう一回振る出た分戻る
+22.収入（多い）
+23.収入（普通）
+24.収入（少ない）
+25.出費（多い）
+26.出費（普通）
+27.出費（少ない）
+28.次のターンサイコロを2個振る
+29.
+30.
+*/
+//alt w ctrl　y コピペ
+
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <termio.h>
+#include <string.h>
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <netinet/in.h>  /* #include < sys/un.h >の代わり */
+#include <netdb.h>
+
+#define GUARD 0
+#define DOWN  1
+#define MAX_GUARD_COUNT 2
+#define MUTEKI 3
+#define GOAL  50
+#define MANY  10000
+#define NORMAL 5000
+#define FEW    3000
+#define LITTLE 1000
+
+int turn;           //誰のターンか
+int field[100];      //マップ
+int player_count;            //プレイヤー数
+
+typedef struct {
+  int dice;         //出した目
+  int stop;         //休みターン
+  int chara;        //使用キャラ
+  int money;        //kane!
+  int status;       //防御か休みか
+  int position;     //field上の位置
+  int guard_count;  //残ガード回数
+} PLAYER;
+
+void advance_one();
+void advance_two();
+void advance_three();
+void advance_four();
+void advance_five();
+void advance_six();
+void return_one();
+void return_two();
+void return_three();
+void return_four();
+void return_five();
+void return_six();
+void return_start();
+void rest_one();
+void rest_two();
+void change_next();
+void change_front();
+void rest_next();
+void rest_front();
+void advance_onemore();
+void return_onemore();
+void revenue_many();
+void revenue_normal();
+void revenue_little();
+void cost_many();
+void cost_normal();
+void cost_little();
+void shake_two();
+
+int main(void){
+
+  PLAYER player[];
+
+
+
+  return 0;
+}
+void advance_one(PLAYER player)
+{
+  player[].position=player[].position+1;
+}
+void advance_two(PLAYER player)
+{
+  if(player[].position==field[99]){
+    player.position==field[99];
+  }else{
+  player[].position=player[].position+2;
+  }
+}
+void advance_three(PLAYER player)
+{
+int i=100-
+  if(player[].position>=field[98]){
+
+  player[].position=player[].position+3;
+}
+void advance_four(PLAYER player)
+{
+  player[].position=player[].position+4;
+}
+void advance_five(PLAYER player)
+{
+  player[].position=player[].position+5;
+}
+void advance_six(PLAYER player)
+{
+  player[].position=player[].position+6;
+}
+void return_one(PLAYER player)
+{
+  if(player[].position=field[1]){
+    player[].position=field[0];
+    
+  }else{
+    
+    player[].position=player[].position-1;
+  }
+}
+void return_two(PLAYER player)
+{
+  if(player[].position=field[2]){
+    player[].position=field[0];
+
+  }else{
+
+  player[].position=player[].position-2;  
+  }
+}
+void return_three(PLAYER player)
+{
+  if(player[].position=field[3]){
+    player[].position=field[0];
+    
+  }else{
+    
+    player[].position=player[].position-3;
+  }
+}
+void return_four(PLAYER player)
+{
+  if(player[].position=field[4]){
+    player[].position=field[0];
+    
+  }else{
+    
+    player[].position=player[].position-4;
+  }
+}
+void return_five(PLAYER player)
+{
+  if(player[].position=field[5]){
+    player[].position=field[0];
+    
+  }else{
+    
+    player[].position=player[].position-5;
+  }
+}
+void return_six(PLAYER player)
+{
+  if(player[].position=field[6]){
+    player[].position=field[0];
+    
+  }else{
+    
+    player[].position=player[].position-6;
+  }
+}
+void return_start(PLAYER player)
+{
+  player[].position=field[0];
+}
+void rest_one(PLAYER player)
+{
+  player[].stop=1;
+}
+void rest_two(PLAYER player)
+{
+  player[].stop=2;
+}
+void change_next(PLAYER player)
+{
+  int p,i;
+  
+  if(turn==player_count){
+    i=1;
+  }else{
+    i=turn+1;
+  }
+
+  p=player[turn].position;
+  position=player[i].position;
+  player[i].position=p;
+}
+void change_front(PLAYER player)
+{
+  int p;
+  int i=0;
+ 
+  if(turn==1){
+    i=player_count;
+  }else{
+    i=turn-1;
+  }
+  
+  p=position;
+  position=player[front].position;  //front仮
+  player[front].position=p;
+}
+void rest_next(PLAYER player)
+{
+  int i=0;
+  
+  if(turn==player_count){
+    i=1;
+  }else{
+    i=turn+1;
+  }
+  player[i].stop=1;
+}
+void rest_front(PLAYER player)
+{
+  int i=0;
+  
+  if(turn==1){
+    i=player_count;
+  }else{
+    i=turn-1;
+  }
+  player[i].stop=1;
+}
+void advance_onemore(PLAYER player)  //未完
+{
+  PLAYER -> dice = rand()%6+1;
+}
+void return_onemore(PLAYER player)   //未完
+{
+  PLAYER -> dice = rand()%6+1;
+}
+void revenue_many(PLAYER player)
+{
+  srand((unsigned)time(NULL));
+
+  player[].money=rand()%(MANY-NORMAL+1)+NORMAL;
+}
+void revenue_normal(PLAYER player)
+{
+  srand((unsigned)time(NULL));
+  
+  player[].money=rand()%(NORMAL-LITTLE+1)+LITTLE;
+}
+void revenue_little(PLAYER player)
+{
+  srand((unsigned)time(NULL));
+
+  player[].money=rand()%LITTLE+1;
+}
+void cost_many(PLAYER player)
+{
+  int c;
+  srand((unsigned)time(NULL));
+
+    c=rand()%(NORMAL-FEW+1)+FEW;;
+    player[].money=-c;
+}
+void cost_normal(PLAYER player)
+{
+  int c;
+  srand((unsigned)time(NULL));
+
+  c=rand()%(FEW-LITTLE+1)+LITTLE;
+  player[].money=-c;
+}
+void cost_little(PLAYER player)
+{
+  srand((unsigned)time(NULL));
+
+  c=rand()%LITTLE+1;
+  player[].money=-c;
+}
+void shake_two(PLAYER player){
+}

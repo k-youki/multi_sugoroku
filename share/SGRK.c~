@@ -1,0 +1,39 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <termio.h>
+#include <string.h>
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <netinet/in.h>  /* #include < sys/un.h >の代わり */
+#include <netdb.h>
+
+#define GUARD  0
+#define DOWN   1
+#define MAX_GUARD_COUNT 2
+#define MUTEKI 3
+#define GOAL  50
+
+int turn;           //誰のターンか
+int field[100];      //マップ
+
+typedef struct {
+  int dice;         //出した目
+  int stop;         //休みターン
+  int money;        //kane!
+  int status;       //防御か休みか
+  int position;     //field上の位置
+  int guard_count;  //残ガード回数
+} PLAYER;
+
+void setting();     //プレイヤー数
+void init();        //各変数初期化・定義
+void set();         //各変数初期値代入
+void print();       //画面表示
+void play_dice();   //サイコロを振る・ガード
+void advance();     //行動の反映(field)
+void stamp();       //踏む
+void effect();      //マス目の効果発動
+void next_turn();   //次のプレイヤーのターンへ
+void goal_check();  //advance * effect KARA
+
